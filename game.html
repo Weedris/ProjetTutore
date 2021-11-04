@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Projet tutoré</title>
+  <style>
+    @font-face {
+      font-family: PeachesEnRegalia;
+      src: url("assets/fonts/PeachesEnRegalia.ttf");
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game">
+    <canvas id="screen" width="1600" height="900"></canvas>
+  </div>
+  <!-- SHARK VISUALS-->
+  <!-- shark sprite left -->
+  <img id="sharkLeftSprite" src="assets/images/shark/sharkLeftSprite.png" style="display: none;">
+  <!-- shark sprite right -->
+  <img id="sharkRightSprite" src="assets/images/shark/sharkRightSprite.png" style="display: none;">
+
+  <!-- shark idle left-->
+  <img id="sharkIdleLeft1" src="assets/images/shark/idle/sharkIdleLeft1.png" style="display: none;">
+  <img id="sharkIdleLeft2" src="assets/images/shark/idle/sharkIdleLeft2.png" style="display: none;">
+  <!-- shark idle right-->
+  <img id="sharkIdleRight1" src="assets/images/shark/idle/sharkIdleRight1.png" style="display: none;">
+  <img id="sharkIdleRight2" src="assets/images/shark/idle/sharkIdleRight2.png" style="display: none;">
+
+  <!-- shark move left-->
+  <img id="sharkMoveLeft1" src="assets/images/shark/move/sharkMoveLeft1.png" style="display: none;">
+  <img id="sharkMoveLeft2" src="assets/images/shark/move/sharkMoveLeft2.png" style="display: none;">
+  <!-- shark move right-->
+  <img id="sharkMoveRight1" src="assets/images/shark/move/sharkMoveRight1.png" style="display: none;">
+  <img id="sharkMoveRight2" src="assets/images/shark/move/sharkMoveRight2.png" style="display: none;">
+
+  <!-- shark eat left-->
+  <img id="sharkEatLeft1" src="assets/images/shark/eat/sharkEatLeft1.png" style="display: none;">
+  <img id="sharkEatLeft2" src="assets/images/shark/eat/sharkEatLeft2.png" style="display: none;">
+  <!-- shark eat right-->
+  <img id="sharkEatRight1" src="assets/images/shark/eat/sharkEatRight1.png" style="display: none;">
+  <img id="sharkEatRight2" src="assets/images/shark/eat/sharkEatRight2.png" style="display: none;">
+
+  <!-- shark hurt left-->
+  <img id="sharkHurtLeft1" src="assets/images/shark/hurt/sharkHurtLeft1.png" style="display: none;">
+  <img id="sharkHurtLeft2" src="assets/images/shark/hurt/sharkHurtLeft2.png" style="display: none;">
+  <img id="sharkHurtRedLeft1" src="assets/images/shark/hurt/sharkHurtRedLeft1.png" style="display: none;">
+  <img id="sharkHurtRedLeft2" src="assets/images/shark/hurt/sharkHurtRedLeft2.png" style="display: none;">
+  <!-- shark hurt right-->
+  <img id="sharkHurtRight1" src="assets/images/shark/hurt/sharkHurtRight1.png" style="display: none;">
+  <img id="sharkHurtRight2" src="assets/images/shark/hurt/sharkHurtRight2.png" style="display: none;">
+  <img id="sharkHurtRedRight1" src="assets/images/shark/hurt/sharkHurtRedRight1.png" style="display: none;">
+  <img id="sharkHurtRedRight2" src="assets/images/shark/hurt/sharkHurtRedRight2.png" style="display: none;">
+
+  <!-- shark die left-->
+  <img id="sharkDieLeft1" src="assets/images/shark/die/sharkDieLeft1.png" style="display: none;">
+  <img id="sharkDieLeft2" src="assets/images/shark/die/sharkDieLeft2.png" style="display: none;">
+  <!-- shark die right-->
+  <img id="sharkDieRight1" src="assets/images/shark/die/sharkDieRight1.png" style="display: none;">
+  <img id="sharkDieRight2" src="assets/images/shark/die/sharkDieRight2.png" style="display: none;">
+
+  <!-- CRAB VISUALS-->
+  <!-- crab sprite -->
+  <img id="crabSprite" src="assets/images/crab/crabSprite.png" style="display: none;">
+
+  <!-- crab move-->
+  <img id="crabMove1" src="assets/images/crab/move/crabMove1.png" style="display: none;">
+  <img id="crabMove2" src="assets/images/crab/move/crabMove2.png" style="display: none;">
+  <img id="crabMove3" src="assets/images/crab/move/crabMove3.png" style="display: none;">
+
+  <!-- crab attack-->
+  <img id="crabAttack1" src="assets/images/crab/attack/crabAttack1.png" style="display: none;">
+  <img id="crabAttack2" src="assets/images/crab/attack/crabAttack2.png" style="display: none;">
+
+  <!-- BASE SQUID VISUALS-->
+  <!-- base squid sprite -->
+  <img id="baseSquidSprite" src="assets/images/squid/baseSquid/baseSquidSprite.png" style="display: none;">
+
+  <!-- base squid move-->
+  <img id="baseSquidMove1" src="assets/images/squid/baseSquid/move/baseSquidMove1.png" style="display: none;">
+  <img id="baseSquidMove2" src="assets/images/squid/baseSquid/move/baseSquidMove2.png" style="display: none;">
+  <img id="baseSquidMove3" src="assets/images/squid/baseSquid/move/baseSquidMove3.png" style="display: none;">
+  <img id="baseSquidMove4" src="assets/images/squid/baseSquid/move/baseSquidMove4.png" style="display: none;">
+
+  <!-- base squid die-->
+  <img id="baseSquidDie1" src="assets/images/squid/baseSquid/die/baseSquidDie1.png" style="display: none;">
+  <img id="baseSquidDie2" src="assets/images/squid/baseSquid/die/baseSquidDie2.png" style="display: none;">
+
+  <!-- GOLDEN SQUID VISUALS-->
+  <!-- golden squid sprite -->
+  <img id="goldenSquidSprite" src="assets/images/squid/goldenSquid/goldenSquidSprite.png" style="display: none;">
+
+  <!-- golden squid move-->
+  <img id="goldenSquidMove1" src="assets/images/squid/goldenSquid/move/goldenSquidMove1.png" style="display: none;">
+  <img id="goldenSquidMove2" src="assets/images/squid/goldenSquid/move/goldenSquidMove2.png" style="display: none;">
+  <img id="goldenSquidMove3" src="assets/images/squid/goldenSquid/move/goldenSquidMove3.png" style="display: none;">
+  <img id="goldenSquidMove4" src="assets/images/squid/goldenSquid/move/goldenSquidMove4.png" style="display: none;">
+
+  <!-- golden squid die-->
+  <img id="goldenSquidDie1" src="assets/images/squid/goldenSquid/die/goldenSquidDie1.png" style="display: none;">
+  <img id="goldenSquidDie2" src="assets/images/squid/goldenSquid/die/goldenSquidDie2.png" style="display: none;">
+
+  <!-- LIFE SQUID VISUALS-->
+  <!-- life squid sprite -->
+  <img id="lifeSquidSprite" src="assets/images/squid/lifeSquid/lifeSquidSprite.png" style="display: none;">
+
+  <!-- life squid move-->
+  <img id="lifeSquidMove1" src="assets/images/squid/lifeSquid/move/lifeSquidMove1.png" style="display: none;">
+  <img id="lifeSquidMove2" src="assets/images/squid/lifeSquid/move/lifeSquidMove2.png" style="display: none;">
+  <img id="lifeSquidMove3" src="assets/images/squid/lifeSquid/move/lifeSquidMove3.png" style="display: none;">
+  <img id="lifeSquidMove4" src="assets/images/squid/lifeSquid/move/lifeSquidMove4.png" style="display: none;">
+
+  <!-- life squid die-->
+  <img id="lifeSquidDie1" src="assets/images/squid/lifeSquid/die/lifeSquidDie1.png" style="display: none;">
+  <img id="lifeSquidDie2" src="assets/images/squid/lifeSquid/die/lifeSquidDie2.png" style="display: none;">
+
+  <!-- HUD VISUALS-->
+  <!-- start menu-->
+  <img id="startMenu1" src="assets/images/hud/menus/start/startMenu1.png" style="display: none;">
+  <img id="startMenu2" src="assets/images/hud/menus/start/startMenu1.png" style="display: none;">
+
+  <!-- pause menu-->
+  <img id="pauseMenu1" src="assets/images/hud/menus/pause/pauseMenu1.png" style="display: none;">
+  <img id="pauseMenu2" src="assets/images/hud/menus/pause/pauseMenu2.png" style="display: none;">
+
+  <!-- game over menu-->
+  <img id="gameOverMenu1" src="assets/images/hud/menus/gameOver/gameOverMenu1.png" style="display: none;">
+  <img id="gameOverMenu2" src="assets/images/hud/menus/gameOver/gameOverMenu2.png" style="display: none;">
+
+  <!-- wood planks -->
+  <img id="hudBackGroundScoreSprite" src="assets/images/hud/woodPlanksScore.png" style="display: none;">
+  <img id="hudBackGroundLifePointSprite" src="assets/images/hud/woodPlanksLifePoint.png" style="display: none;">
+
+  <!-- life point sprite -->
+  <img id="hudLifePointSprite" src="assets/images/hud/heart/heartSprite.png" style="display: none;">
+
+  <!-- life point spawn-->
+  <img id="hudLifePointSpawn1" src="assets/images/hud/heart/heartSpawn/heartSpawn1.png" style="display: none;">
+  <img id="hudLifePointSpawn2" src="assets/images/hud/heart/heartSpawn/heartSpawn2.png" style="display: none;">
+  <img id="hudLifePointSpawn3" src="assets/images/hud/heart/heartSpawn/heartSpawn3.png" style="display: none;">
+
+  <!-- life point pop-->
+  <img id="hudLifePointPop1" src="assets/images/hud/heart/heartPop/heartPop1.png" style="display: none;">
+  <img id="hudLifePointPop2" src="assets/images/hud/heart/heartPop/heartPop2.png" style="display: none;">
+  <img id="hudLifePointPop3" src="assets/images/hud/heart/heartPop/heartPop3.png" style="display: none;">
+
+  <!-- score sprite -->
+  <img id="hudScoreSprite" src="assets/images/hud/scoreSprite.png" style="display: none;">
+
+  <!-- VISUAL EFFECTS-->
+  <!-- spawn -->
+  <img id="spawn1" src="assets/images/effects/spawn/spawn1.png" style="display: none;">
+  <img id="spawn2" src="assets/images/effects/spawn/spawn2.png" style="display: none;">
+  <img id="spawn3" src="assets/images/effects/spawn/spawn3.png" style="display: none;">
+
+  <!-- BACKGROUND VISUALS-->
+  <img id="bg1" src="assets/images/background/bg1.jpg" style="display: none;">
+  <img id="bg2" src="assets/images/background/bg2.jpg" style="display: none;">
+  <img id="bg3" src="assets/images/background/bg3.jpg" style="display: none;">
+  <img id="bg4" src="assets/images/background/bg4.jpg" style="display: none;">
+  <img id="bg5" src="assets/images/background/bg5.jpg" style="display: none;">
+  <img id="bg6" src="assets/images/background/bg6.jpg" style="display: none;">
+  <img id="bg7" src="assets/images/background/bg7.jpg" style="display: none;">
+  <img id="bg8" src="assets/images/background/bg8.jpg" style="display: none;">
+  <img id="bg9" src="assets/images/background/bg9.jpg" style="display: none;">
+  <img id="bg10" src="assets/images/background/bg10.jpg" style="display: none;">
+  <img id="bg11" src="assets/images/background/bg11.jpg" style="display: none;">
+  <img id="bg12" src="assets/images/background/bg12.jpg" style="display: none;">
+  <img id="bg13" src="assets/images/background/bg13.jpg" style="display: none;">
+  <img id="bg14" src="assets/images/background/bg14.jpg" style="display: none;">
+  <img id="bg15" src="assets/images/background/bg15.jpg" style="display: none;">
+  <img id="bg16" src="assets/images/background/bg16.jpg" style="display: none;">
+  <img id="bg17" src="assets/images/background/bg17.jpg" style="display: none;">
+  <img id="bg18" src="assets/images/background/bg18.jpg" style="display: none;">
+  <img id="bg19" src="assets/images/background/bg19.jpg" style="display: none;">
+  <img id="bg20" src="assets/images/background/bg20.jpg" style="display: none;">
+  <img id="bg21" src="assets/images/background/bg21.jpg" style="display: none;">
+  <img id="bg22" src="assets/images/background/bg22.jpg" style="display: none;">
+  <img id="bg23" src="assets/images/background/bg23.jpg" style="display: none;">
+  <img id="bg24" src="assets/images/background/bg24.jpg" style="display: none;">
+  <img id="bg25" src="assets/images/background/bg25.jpg" style="display: none;">
+
+  <!-- SCRIPTS-->
+  <script Language="Javascript" src="js/engine/engine.js"></script>
+  <script Language="Javascript" src="js/engine/playerControls.js"></script>
+  <script Language="Javascript" src="js/engine/animation.js"></script>
+  <script Language="Javascript" src="js/entities/entity.js"></script>
+  <script Language="Javascript" src="js/entities/shark.js"></script>
+  <script Language="Javascript" src="js/entities/crab.js"></script>
+  <script Language="Javascript" src="js/entities/squid.js"></script>
+  <script Language="Javascript" src="js/displayElements/background.js"></script>
+  <script Language="Javascript" src="js/displayElements/hud.js"></script>
+  <script Language="Javascript" src="js/gameHandlers/gameData.js"></script>
+  <script Language="Javascript" src="js/gameHandlers/gameInitializer.js"></script>
+  <script Language="Javascript" src="js/gameHandlers/gameStateHandler.js"></script>
+  <script Language="Javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
